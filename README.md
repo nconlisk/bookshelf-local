@@ -1,5 +1,5 @@
 # bookshelf
-A web app for cataloguing all physical and digital books owned by the user.
+A basic web app using REACT for cataloguing all physical and digital books owned by the user.
 
 
 TODO:
