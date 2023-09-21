@@ -2,11 +2,11 @@
   "name": "bookshelf",
   "version": "1.0.0",
   "description": "A basic web app using REACT for cataloguing all physical and digital books owned by the user.",
-  "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "author": "",
+    "build": "if-env TYPE=server && (cd server && npm install) || (cd client && npm install)",
+    "server": "node ./server/index.js",
+    "client": "cd client && npm start" },
+  "author": "Noel Conlisk",
   "license": "ISC",
   "dependencies": {
     "if-env": "^1.0.4"
