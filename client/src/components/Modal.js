@@ -75,20 +75,20 @@ const Modal = ({mode, setShowModal, getData, task}) => {
       <div className="overlay">
         <div className="modal">
             <div className="form-title-container">
-                <h3>Let's {mode} your task</h3>
+                <h3>Let's {mode} a book entry</h3>
                 <button onClick={()=> setShowModal(false)}>X</button>
             </div>
             <form >
                 <input
                     required
                     maxLength={30}
-                    placeholder=" Your task goes here"
+                    placeholder=" Add book title here"
                     name="title"
                     value={data.title}
                     onChange={handleChange}
                 />
                 <br/>
-                <label for='range'>Drag slider to select task progress</label>
+                <label for='range'>Drag slider to select reading progress</label>
                 <input 
                     required
                     type="range"
