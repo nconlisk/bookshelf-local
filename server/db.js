@@ -10,7 +10,7 @@ const pool = new Pool({
     host: process.env.POSTGRES_HOST,
     port: process.env.DBPORT,
     database: process.env.POSTGRES_DATABASE,
-    ssl: true
+    ssl: false
 })
 
 module.exports = pool

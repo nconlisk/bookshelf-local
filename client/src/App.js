@@ -15,8 +15,8 @@ const App = () => {
 
   const getData = async () => {
     try {
-      //const response = await fetch(`http://localhost:8000/todos/${userEmail}`) 
-      const response = await fetch(`${process.env.REACT_APP_SERVERURL}/todos/${userEmail}`)  //url with backticks as will be passing email param.
+      //const response = await fetch(`http://localhost:8000/books/${userEmail}`) 
+      const response = await fetch(`${process.env.REACT_APP_SERVERURL}/books/${userEmail}`)  //url with backticks as will be passing email param.
       const json = await response.json()
       console.log(json)
       setTasks(json)
@@ -36,14 +36,16 @@ const App = () => {
   //Sort by date
   const sortedTasks = tasks?.sort((a,b) => new Date(a.date) - new Date(b.date))
 
+  const userName = userEmail.split('@')[0]
+
   return (
     <div className="app">
 
       {!authToken && <Auth/>}  
       {authToken &&
       <>
-      <ListHeader listName={"🌍 Holiday tick list"} getData={getData}></ListHeader>
-      <p className='user-email'>Welcome back {userEmail}</p>
+      <ListHeader listName={"📚 My Bookshelf"} getData={getData}></ListHeader>
+      <p className='user-email'>Welcome back {userName.replace(/^./, str => str.toUpperCase())}</p>
       { sortedTasks?.map((task) => <ListItem key={task.id} getData={getData} task={task}/>)}
       </>}
       <p className='copyright'> © Noel Conlisk</p>

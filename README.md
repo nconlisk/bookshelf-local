@@ -11,4 +11,4 @@ Implement API access for book details.
 Implement planned UX/UI improvements.
 Update backend/server functions to accommodate information from the API calls. 
 Improve book adding modal.
-
+Reformat CSS with library/book theme.

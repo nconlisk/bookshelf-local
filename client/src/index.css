@@ -129,11 +129,11 @@ input {
   
 }
 
-.tick {
+.book {
   padding: 10px;
 }
-.tick path{
-  fill:#000;
+.book path{
+  fill:skyblue;
   stroke: #000;
   stroke-miterlimit: 10;
   stroke-width: 32px;
