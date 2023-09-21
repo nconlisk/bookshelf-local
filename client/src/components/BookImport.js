@@ -1,18 +1,19 @@
 import { useState } from "react"
 import { useCookies } from "react-cookie"
 
-const GetBook = ({mode, setShowImport, getData, task}) => {
+const GetBook = ({setShowImport, getData, task}) => {
+
+    //remove edit mode, this modal is only used for data import.
+    
 
     const [cookies, setCookie, removeCookie] = useCookies(null)
     
-    //const mode = 'create'   //dont need this anymore as create mode is passed in from ListHeader.js.
-    const editMode = mode === 'edit' ? true : false
-
+        
     const [data, setData] = useState({
-        user_email: editMode ? task.user_email : cookies.Email, //null, //hard coded user for testing
-        title: editMode ? task.title : "",
-        progress: editMode ? task.progress : 50,
-        date: editMode ? task.date : new Date()
+        user_email: cookies.Email, //null, //hard coded user for testing
+        title:"",
+        progress: 50,
+        date: new Date()
     })
 
     
@@ -35,27 +36,6 @@ const GetBook = ({mode, setShowImport, getData, task}) => {
             
         }
     }
-
-
-    const editData = async (e) => {
-        e.preventDefault()  //to prevent modal from closing on clicking submit, so we can see response.
-        try {
-            const response = await fetch(`${process.env.REACT_APP_SERVERURL}/books/${task.id}`, {
-                method:"PUT",
-                headers: {'Content-Type':'application/json'},
-                body: JSON.stringify(data)
-            })
-            if (response.status === 200){
-                setShowImport(false)
-                //console.log(data)
-                getData()
-            }
-        }catch (err) {
-            console.log(err)            
-        }
-    }
-
-
 
 
     const handleChange = (e) => {
@@ -99,7 +79,7 @@ const GetBook = ({mode, setShowImport, getData, task}) => {
                     value={data.progress}
                     onChange={handleChange}
                 /> */}
-                <input className={mode} type="submit" onClick={editMode ? editData : postData}/>
+                <input className="find-book" type="submit" onClick={postData}/>
             </form>
             </div>
       </div>
