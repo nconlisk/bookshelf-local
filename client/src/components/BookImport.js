@@ -1,7 +1,7 @@
 import { useState } from "react"
 import { useCookies } from "react-cookie"
 
-const GetBook = ({setShowImport, getData, task}) => {
+const GetBook = ({setShowImport, getData}) => {
 
     //remove edit mode, this modal is only used for data import.
     
