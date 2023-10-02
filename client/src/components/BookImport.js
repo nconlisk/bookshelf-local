@@ -11,10 +11,10 @@ const GetBook = ({setShowImport, getData}) => {
         
     const [data, setData] = useState({
         user_email: cookies.Email, //null, //hard coded user for testing
-        title: "",
-        author: "",
-        year: "",
-        isbn: "",
+        title: "",//data.title ?? "",
+        author: "",//data.author ?? "",
+        year: "",//data.year ?? "",
+        isbn: "",//data.isbn ?? "",
         progress: 50,
         date: new Date()
     })
@@ -29,6 +29,8 @@ const GetBook = ({setShowImport, getData}) => {
           console.log(json)
           //add function here to process data into format required by the app.
           //also filter isbn input to remove dash using regex.
+
+
           setData(json)
     
         } catch (err) {
