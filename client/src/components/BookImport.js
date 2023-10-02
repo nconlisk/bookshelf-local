@@ -11,10 +11,10 @@ const GetBook = ({setShowImport, getData}) => {
         
     const [data, setData] = useState({
         user_email: cookies.Email, //null, //hard coded user for testing
-        title: "",//data.title ?? "",
-        author: "",//data.author ?? "",
-        year: "",//data.year ?? "",
-        isbn: "",//data.isbn ?? "",
+        title: "",
+        author:"",
+        year: "",
+        isbn: "",
         progress: 50,
         date: new Date()
     })
@@ -25,13 +25,23 @@ const GetBook = ({setShowImport, getData}) => {
         try {
           const bookURL = `https://www.googleapis.com/books/v1/volumes?q=isbn:${data.isbn}&key=AIzaSyCbuwXvJBWnTMUO-iwMXv2Y79Pucksut68` //${process.env.API_KEY}`
           const response = await fetch(bookURL)  //url with backticks as will be passing email param.
-          const json = await response.json()
-          console.log(json)
-          //add function here to process data into format required by the app.
+          const bookinfo = await response.json()
+          
           //also filter isbn input to remove dash using regex.
+          const title = bookinfo.items[0].volumeInfo.title
+          const author = bookinfo.items[0].volumeInfo.authors[0]
+          const year = bookinfo.items[0].volumeInfo.publishedDate.split('-')[0]
+          const isbNumber = bookinfo.items[0].volumeInfo.industryIdentifiers
+          let isbn = ""
+          if (isbNumber.length === 2){
+            isbn = isbNumber[1].identifier
+          } else{
+            isbn = isbNumber[0].identifier}
+          console.log(title, author, year, isbn)
+          
 
+          setData() //need to structure response here to update the data array above.
 
-          setData(json)
     
         } catch (err) {
           console.log(err)
