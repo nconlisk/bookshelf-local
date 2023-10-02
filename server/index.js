@@ -60,7 +60,7 @@ app.put('/books/:id', async (req, res) => {
     const { id } = req.params
     const { user_email, title, author, year, progress, date} = req.body
     try {
-        const editBook = await pool.query('UPDATE books SET user_email = $1, title = $2, author =$3, year =$4, progress = $5, date =$6, WHERE id = $7;',
+        const editBook = await pool.query('UPDATE books SET user_email = $1, title = $2, author =$3, year =$4, progress = $5, date =$6 WHERE id = $7;',
         [user_email, title, author, year, progress, date, id])
 
         res.json(editBook)
