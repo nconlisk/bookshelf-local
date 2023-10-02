@@ -63,12 +63,50 @@ const GetBook = ({setShowImport, getData}) => {
                     required
                     maxLength={30}
                     placeholder=" Enter Barcode Here"
+                    name="ISBN"
+                    value={data.isbn}
+                    onChange={handleChange}
+                />
+                <input className='create' type="SUBMIT" onClick={''}/>
+            </form>
+            <form >
+                <input
+                    required
+                    maxLength={30}
+                    placeholder=" Add book title here"
                     name="title"
                     value={data.title}
                     onChange={handleChange}
                 />
-                {/* <br/>
-                <label for='range'>Drag slider to select reading progress</label>
+                <br/>
+                <input
+                    required
+                    maxLength={30}
+                    placeholder=" Add author here"
+                    name="author"
+                    value={data.author}
+                    onChange={handleChange}
+                />
+                <br/>
+                <input
+                    required
+                    maxLength={30}
+                    placeholder=" Add publication year here"
+                    name="year"
+                    value={data.year}
+                    onChange={handleChange}
+                />
+                <br/>
+                <input
+                    required
+                    maxLength={30}
+                    placeholder=" Add publication year here"
+                    name="year"
+                    value={data.year}
+                    onChange={handleChange}
+                />
+                <br/>
+                <label htmlFor='range'>Drag slider to select reading progress</label>
                 <input 
                     required
                     type="range"
@@ -78,8 +116,8 @@ const GetBook = ({setShowImport, getData}) => {
                     name="progress"
                     value={data.progress}
                     onChange={handleChange}
-                /> */}
-                <input className="find-book" type="submit" onClick={postData}/>
+                />
+                <input className='create' type="submit" onClick={postData}/>
             </form>
             </div>
       </div>

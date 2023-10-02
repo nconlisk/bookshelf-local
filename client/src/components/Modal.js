@@ -108,7 +108,16 @@ const Modal = ({mode, setShowModal, getData, task}) => {
                     onChange={handleChange}
                 />
                 <br/>
-                <label for='range'>Drag slider to select reading progress</label>
+                <input
+                    required
+                    maxLength={30}
+                    placeholder=" Add book isbn here"
+                    name="isbn"
+                    value={data.isbn}
+                    onChange={handleChange}
+                />
+                <br/>
+                <label htmlFor='range'>Drag slider to select reading progress</label>
                 <input 
                     required
                     type="range"
