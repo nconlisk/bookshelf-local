@@ -19,6 +19,23 @@ const GetBook = ({setShowImport, getData}) => {
         date: new Date()
     })
 
+
+    const getBookInfo = async (e) => {
+        e.preventDefault()
+        try {
+          const bookURL = `https://www.googleapis.com/books/v1/volumes?q=isbn:${data.isbn}&key=AIzaSyCbuwXvJBWnTMUO-iwMXv2Y79Pucksut68` //${process.env.API_KEY}`
+          const response = await fetch(bookURL)  //url with backticks as will be passing email param.
+          const json = await response.json()
+          console.log(json)
+          //add function here to process data into format required by the app.
+          //also filter isbn input to remove dash using regex.
+          setData(json)
+    
+        } catch (err) {
+          console.log(err)
+        }
+      }
+
     
     const postData = async (e) => {
         e.preventDefault()  //to prevent modal from closing on clicking submit, so we can see response.
@@ -66,11 +83,11 @@ const GetBook = ({setShowImport, getData}) => {
                     required
                     maxLength={30}
                     placeholder=" Enter Barcode Here"
-                    name="ISBN"
+                    name="isbn"
                     value={data.isbn}
                     onChange={handleChange}
                 />
-                <input className='create' type="SUBMIT" onClick={''}/>
+                <input className='create' type="SUBMIT" onClick={getBookInfo}/>
             </form>
             <form >
                 <input
