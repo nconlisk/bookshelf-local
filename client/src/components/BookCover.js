@@ -21,12 +21,12 @@ const BookCover= ({ task }) => {
         ArtText="not found"
       }
 
-    //use progress % passed in from task and use random color from array to style it
+    
     return (
       <div className="book-cover-art">
         <figure>
             <img src={Art} alt={ArtText} className="book-cover-img"></img>
-            <figcaption className="task-title">
+            <figcaption className="book-title">
                 Title: {task.title} <br/> 
                 Author: {task.author} <br/> 
                 Year: {task.year}
