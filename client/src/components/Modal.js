@@ -9,10 +9,11 @@ const Modal = ({mode, setShowModal, getData, task}) => {
     const editMode = mode === 'edit' ? true : false
 
     const [data, setData] = useState({
-        user_email: editMode ? task.user_email : cookies.Email, //null, //hard coded user for testing
+        user_email: editMode ? task.user_email : cookies.Email, 
         title: editMode ? task.title : "",
         author: editMode ? task.author : "",
         year: editMode ? task.year : "",
+        isbn: editMode ? task.isbn : "",
         progress: editMode ? task.progress : 50,
         date: editMode ? task.date : new Date()
     })

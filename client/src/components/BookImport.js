@@ -11,7 +11,10 @@ const GetBook = ({setShowImport, getData}) => {
         
     const [data, setData] = useState({
         user_email: cookies.Email, //null, //hard coded user for testing
-        title:"",
+        title: "",
+        author: "",
+        year: "",
+        isbn: "",
         progress: 50,
         date: new Date()
     })
