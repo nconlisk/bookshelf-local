@@ -227,7 +227,7 @@ input {
 }
 
 .outer-bar {
-  width: 300px;
+  width: 280px;
   height: 14px;
   background-color: rgb(240, 128, 128); 
   border-radius: 7px;
@@ -240,7 +240,7 @@ input {
 }
 
 .book-cover-art{
-  width: 300px;
+  width: 320px;
 
 }
 .book-cover-img {
