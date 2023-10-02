@@ -13,6 +13,7 @@ const BookCover= ({ title }) => {
     if(title in bookArt){
         //hardcoded as a test, eventually download from book api on task creation
         //need to style in css and impose some dimensional constraints.
+        //had to move thumbnails to public folder for react app to have access to them via relative links
         Art = bookArt[title] 
         ArtText="book cover image"
       }else{
@@ -24,7 +25,7 @@ const BookCover= ({ title }) => {
     return (
       <div className="book-cover-art">
         <figure>
-            <img src={Art} alt={ArtText}></img>
+            <img src={Art} alt={ArtText} className="book-cover-img"></img>
             <figcaption className="task-title">Title: {title}</figcaption>
         </figure>  
       </div>
