@@ -11,6 +11,8 @@ const Modal = ({mode, setShowModal, getData, task}) => {
     const [data, setData] = useState({
         user_email: editMode ? task.user_email : cookies.Email, //null, //hard coded user for testing
         title: editMode ? task.title : "",
+        author: editMode ? task.author : "",
+        year: editMode ? task.year : "",
         progress: editMode ? task.progress : 50,
         date: editMode ? task.date : new Date()
     })
@@ -85,6 +87,24 @@ const Modal = ({mode, setShowModal, getData, task}) => {
                     placeholder=" Add book title here"
                     name="title"
                     value={data.title}
+                    onChange={handleChange}
+                />
+                <br/>
+                <input
+                    required
+                    maxLength={30}
+                    placeholder=" Add author here"
+                    name="author"
+                    value={data.author}
+                    onChange={handleChange}
+                />
+                <br/>
+                <input
+                    required
+                    maxLength={30}
+                    placeholder=" Add publication year here"
+                    name="year"
+                    value={data.year}
                     onChange={handleChange}
                 />
                 <br/>

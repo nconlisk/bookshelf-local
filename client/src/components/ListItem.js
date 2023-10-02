@@ -34,7 +34,7 @@ const ListItem = ({task, getData}) => {
       <li className="list-item">
         <div className="info-container">
         <BookIcon/>    
-        <BookCover title={task.title}/>  
+        <BookCover task={task}/>  
         <ProgressBar progress={task.progress}/>
         </div>
 

@@ -1,4 +1,4 @@
-const BookCover= ({ title }) => {
+const BookCover= ({ task }) => {
 
     let Art = ""
     let ArtText = ""
@@ -10,11 +10,11 @@ const BookCover= ({ title }) => {
         "Fluent Forever":"thumbnails/fluent.jpg" 
         }
 
-    if(title in bookArt){
+    if(task.title in bookArt){
         //hardcoded as a test, eventually download from book api on task creation
         //need to style in css and impose some dimensional constraints.
         //had to move thumbnails to public folder for react app to have access to them via relative links
-        Art = bookArt[title] 
+        Art = bookArt[task.title] 
         ArtText="book cover image"
       }else{
         Art = "thumbnails/notFound.jpg" 
@@ -26,7 +26,11 @@ const BookCover= ({ title }) => {
       <div className="book-cover-art">
         <figure>
             <img src={Art} alt={ArtText} className="book-cover-img"></img>
-            <figcaption className="task-title">Title: {title}</figcaption>
+            <figcaption className="task-title">
+                Title: {task.title} <br/> 
+                Author: {task.author} <br/> 
+                Year: {task.year}
+            </figcaption>
         </figure>  
       </div>
     );
