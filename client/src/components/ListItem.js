@@ -2,6 +2,7 @@ import { useState } from "react";
 import ProgressBar from "./ProgressBar";
 import BookIcon from "./BookIcon";
 import Modal from "./Modal";
+import BookCover from "./BookCover";
 
 
 const ListItem = ({task, getData}) => {
@@ -10,7 +11,7 @@ const ListItem = ({task, getData}) => {
 
     const deleteItem = async() => {
       try {
-        const response = await fetch(`${process.env.REACT_APP_SERVERURL}/todos/${task.id}`, {
+        const response = await fetch(`${process.env.REACT_APP_SERVERURL}/books/${task.id}`, {
           method:'DELETE'
         })
 
@@ -24,11 +25,16 @@ const ListItem = ({task, getData}) => {
       }
     }
 
+
+    //removed <p className="task-title">Title: {task.title}</p> from the return statement.
+    //moved its functionality into the BookCover component
+
+
     return (
       <li className="list-item">
         <div className="info-container">
-        <BookIcon/>
-        <p className="task-title">Title:{task.title}</p>
+        <BookIcon/>    
+        <BookCover title={task.title}/>  
         <ProgressBar progress={task.progress}/>
         </div>
 
