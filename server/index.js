@@ -35,11 +35,11 @@ app.get('/books/:userEmail', async (req, res) => {
 
 //create a new book
 app.post('/books', async (req, res) => {
-    const { user_email, title, author, year, isbn, progress, date} = req.body
+    const { user_email, title, author, year, isbn, thumbnail, progress, date} = req.body
     const id = uuidv4()
     try {
-        const newBook = await pool.query('INSERT INTO books(id, user_email, title, author, year, isbn, progress, date) VALUES($1, $2, $3, $4, $5, $6, $7, $8)',
-        [id, user_email, title, author, year, isbn, progress, date])
+        const newBook = await pool.query('INSERT INTO books(id, user_email, title, author, year, isbn, thumbnail, progress, date) VALUES($1, $2, $3, $4, $5, $6, $7, $8, $9)',
+        [id, user_email, title, author, year, isbn, thumbnail, progress, date])
 
         
 
@@ -56,10 +56,10 @@ app.post('/books', async (req, res) => {
 //edit a book
 app.put('/books/:id', async (req, res) => {
     const { id } = req.params
-    const { user_email, title, author, year, isbn, progress, date} = req.body
+    const { user_email, title, author, year, isbn, thumbnail, progress, date} = req.body
     try {
-        const editBook = await pool.query('UPDATE books SET user_email = $1, title = $2, author =$3, year =$4, isbn = $5, progress = $6, date =$7 WHERE id = $8;',
-        [user_email, title, author, year, isbn, progress, date, id])
+        const editBook = await pool.query('UPDATE books SET user_email = $1, title = $2, author =$3, year =$4, isbn = $5, thumbnail = $6, progress = $7, date =$8 WHERE id = $9;',
+        [user_email, title, author, year, isbn, thumbnail, progress, date, id])
 
         res.json(editBook)
         

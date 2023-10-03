@@ -14,6 +14,7 @@ const Modal = ({mode, setShowModal, getData, task}) => {
         author: editMode ? task.author : "",
         year: editMode ? task.year : "",
         isbn: editMode ? task.isbn : "",
+        thumbnail: editMode ? task.thumbnail : "",
         progress: editMode ? task.progress : 50,
         date: editMode ? task.date : new Date()
     })
@@ -115,6 +116,14 @@ const Modal = ({mode, setShowModal, getData, task}) => {
                     placeholder=" Add book isbn here"
                     name="isbn"
                     value={data.isbn}
+                    onChange={handleChange}
+                />
+                <br/>
+                <input
+                    required
+                    placeholder=" Add URL to book cover art here"
+                    name="thumbnail"
+                    value={data.thumbnail}
                     onChange={handleChange}
                 />
                 <br/>

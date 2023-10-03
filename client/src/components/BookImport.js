@@ -15,6 +15,7 @@ const GetBook = ({setShowImport, getData}) => {
         author: "",
         year: "",
         isbn: "",
+        thumbnail: "",
         progress: 50,
         date: new Date()
     })
@@ -38,9 +39,12 @@ const GetBook = ({setShowImport, getData}) => {
           } else{
             isbn13 = isbNumber[0].identifier}
 
+          //url for book cover from API.
+          const thumbnailURL = bookinfo.items[0].volumeInfo.imageLinks.thumbnail
+
         
           console.log(title, author, year, isbn13)
-          setData(data.user_email, data.title=title, data.author=author, data.year=year, data.isbn=isbn13, data.progress, data.date) //need to structure response here to update the data array above.
+          setData(data.user_email, data.title=title, data.author=author, data.year=year, data.isbn=isbn13,data.thumbnail=thumbnailURL, data.progress, data.date) //need to structure response here to update the data array above.
           console.log(data)
           postData(data)
 
