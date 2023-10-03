@@ -12,7 +12,7 @@ const GetBook = ({setShowImport, getData}) => {
     const [data, setData] = useState({
         user_email: cookies.Email, //null, //hard coded user for testing
         title: "",
-        author:"",
+        author: "",
         year: "",
         isbn: "",
         progress: 50,
@@ -32,25 +32,28 @@ const GetBook = ({setShowImport, getData}) => {
           const author = bookinfo.items[0].volumeInfo.authors[0]
           const year = bookinfo.items[0].volumeInfo.publishedDate.split('-')[0]
           const isbNumber = bookinfo.items[0].volumeInfo.industryIdentifiers
-          let isbn = ""
+          let isbn13 = ""
           if (isbNumber.length === 2){
-            isbn = isbNumber[1].identifier
+            isbn13 = isbNumber[1].identifier
           } else{
-            isbn = isbNumber[0].identifier}
-          console.log(title, author, year, isbn)
-          
+            isbn13 = isbNumber[0].identifier}
 
-          setData() //need to structure response here to update the data array above.
+        
+          console.log(title, author, year, isbn13)
+          setData(data.user_email, data.title=title, data.author=author, data.year=year, data.isbn=isbn13, data.progress, data.date) //need to structure response here to update the data array above.
+          console.log(data)
+          postData(data)
 
     
         } catch (err) {
           console.log(err)
         }
+
       }
 
-    
-    const postData = async (e) => {
-        e.preventDefault()  //to prevent modal from closing on clicking submit, so we can see response.
+
+    const postData = async () => {
+        
         try {
             const response = await fetch(`${process.env.REACT_APP_SERVERURL}/books`, {
                 method:"POST",
@@ -67,7 +70,9 @@ const GetBook = ({setShowImport, getData}) => {
             console.log(err)
             
         }
+
     }
+
 
 
     const handleChange = (e) => {
@@ -101,56 +106,7 @@ const GetBook = ({setShowImport, getData}) => {
                 />
                 <input className='create' type="SUBMIT" onClick={getBookInfo}/>
             </form>
-            <form >
-                <input
-                    required
-                    maxLength={30}
-                    placeholder=" Add book title here"
-                    name="title"
-                    value={data.title}
-                    onChange={handleChange}
-                />
-                <br/>
-                <input
-                    required
-                    maxLength={30}
-                    placeholder=" Add author here"
-                    name="author"
-                    value={data.author}
-                    onChange={handleChange}
-                />
-                <br/>
-                <input
-                    required
-                    maxLength={30}
-                    placeholder=" Add publication year here"
-                    name="year"
-                    value={data.year}
-                    onChange={handleChange}
-                />
-                <br/>
-                <input
-                    required
-                    maxLength={30}
-                    placeholder=" Add publication year here"
-                    name="year"
-                    value={data.year}
-                    onChange={handleChange}
-                />
-                <br/>
-                <label htmlFor='range'>Drag slider to select reading progress</label>
-                <input 
-                    required
-                    type="range"
-                    id="range"
-                    min="0"
-                    max="100"
-                    name="progress"
-                    value={data.progress}
-                    onChange={handleChange}
-                />
-                <input className='create' type="submit" onClick={postData}/>
-            </form>
+           
             </div>
       </div>
     );
