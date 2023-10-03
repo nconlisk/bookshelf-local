@@ -40,7 +40,10 @@ const GetBook = ({setShowImport, getData}) => {
             isbn13 = isbNumber[0].identifier}
 
           //url for book cover from API.
-          const thumbnailURL = bookinfo.items[0].volumeInfo.imageLinks.thumbnail
+          let thumbnailURL = ""
+          if(bookinfo.items[0].volumeInfo.imageLinks){
+            thumbnailURL = bookinfo.items[0].volumeInfo.imageLinks.thumbnail
+          }          
 
         
           console.log(title, author, year, isbn13)
