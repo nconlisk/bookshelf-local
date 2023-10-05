@@ -2,18 +2,19 @@ import React, { useRef, useEffect, useState } from 'react'
 import { BrowserBarcodeReader } from '@zxing/library'
 
 
-const BarcodeScanner = ({ onScan }) => {
+const BarcodeScanner = ({ onScan, isScannerVisible }) => {
   const videoRef = useRef(null)
+  const codeReaderRef = useRef(null)
 
   useEffect(() => {
-    const codeReader = new BrowserBarcodeReader()
+    codeReaderRef.current = new BrowserBarcodeReader()
 
     const scanBarcode = async () => {
       try {
         const stream = await navigator.mediaDevices.getUserMedia({ video: true })
         videoRef.current.srcObject = stream
 
-        codeReader.decodeFromVideoDevice(undefined, videoRef.current, (result, error) => {
+        codeReaderRef.current.decodeFromVideoDevice(undefined, videoRef.current, (result, error) => {
           if (result) {
             const scannedData = result.text
             onScan(scannedData)
@@ -26,12 +27,16 @@ const BarcodeScanner = ({ onScan }) => {
       }
     };
 
-    scanBarcode()
+    if(isScannerVisible){
+        scanBarcode()
+    }else{
+        codeReaderRef.current.reset()
+    }
 
     return () => {
-      codeReader.reset()
-    };
-  }, [onScan]);
+      codeReaderRef.current.reset()
+    }
+  }, [onScan, isScannerVisible])
 
   return (
     <div>

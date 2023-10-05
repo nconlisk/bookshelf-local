@@ -51,6 +51,7 @@ const GetBook = ({setShowImport, getData}) => {
           setData(data.user_email, data.title=title, data.author=author, data.year=year, data.isbn=isbn13,data.thumbnail=thumbnailURL, data.progress, data.date) //need to structure response here to update the data array above.
           console.log(data)
           postData(data)
+          handleCloseModal()
 
     
         } catch (err) {
@@ -71,7 +72,6 @@ const GetBook = ({setShowImport, getData}) => {
             if (response.status === 200){
                 console.log("WORKED")
                 //console.log(data)
-                setShowImport(false)
                 getData()
             }
         }catch (err) {
@@ -100,6 +100,15 @@ const GetBook = ({setShowImport, getData}) => {
     const handleIsbnChange = (newIsbn) => {
         setData({ ...data, isbn: newIsbn })
     }
+
+       
+    const [isScannerVisible, setIsScannerVisible] = useState(true); // Control the visibility of BarcodeScanner
+    
+    const handleCloseModal = () => {
+        setShowImport(false)
+        setIsScannerVisible(false)
+        //window.location.reload(false) //temporary workaround to release webcam and resources when modal closed
+    }
     
 
     return (
@@ -107,12 +116,15 @@ const GetBook = ({setShowImport, getData}) => {
         <div className="modal">
             <div className="form-title-container">
                 <h3>Search book by barcode</h3>
-                <button onClick={()=> setShowImport(false)}>X</button>
+                <button onClick={handleCloseModal}>X</button>
             </div>
             <div>
                 <p>Scan barcode</p>
-                <BarcodeScanner onScan={handleIsbnChange}/>
-                
+                {isScannerVisible && (
+                <BarcodeScanner 
+                onScan={handleIsbnChange} 
+                isScannerVisible={isScannerVisible}
+                />)}
             </div>
             <form >
                 <input
