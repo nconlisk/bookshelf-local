@@ -119,7 +119,6 @@ const GetBook = ({setShowImport, getData}) => {
                 <button onClick={handleCloseModal}>X</button>
             </div>
             <div>
-                <p>Scan barcode</p>
                 {isScannerVisible && (
                 <BarcodeScanner 
                 onScan={handleIsbnChange} 
@@ -127,6 +126,7 @@ const GetBook = ({setShowImport, getData}) => {
                 />)}
             </div>
             <form >
+                <p>Scan or Manually Enter Barcode</p>
                 <input
                     required
                     maxLength={30}

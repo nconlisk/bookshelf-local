@@ -21,11 +21,11 @@ const BarcodeScanner = ({ onScan, isScannerVisible }) => {
           } else if (error) {
             console.error('Error decoding barcode:', error)
           }
-        });
+        })
       } catch (error) {
         console.error('Error accessing camera:', error)
       }
-    };
+    }
 
     if(isScannerVisible){
         scanBarcode()
