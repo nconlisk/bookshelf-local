@@ -1,5 +1,6 @@
 import { useState } from "react"
 import { useCookies } from "react-cookie"
+import BarcodeScanner from "./Scanner"
 
 const GetBook = ({setShowImport, getData}) => {
 
@@ -95,12 +96,23 @@ const GetBook = ({setShowImport, getData}) => {
 
     }
 
+     // Function to update the ISBN input value
+    const handleIsbnChange = (newIsbn) => {
+        setData({ ...data, isbn: newIsbn })
+    }
+    
+
     return (
       <div className="overlay">
         <div className="modal">
             <div className="form-title-container">
                 <h3>Search book by barcode</h3>
                 <button onClick={()=> setShowImport(false)}>X</button>
+            </div>
+            <div>
+                <p>Scan barcode</p>
+                <BarcodeScanner onScan={handleIsbnChange}/>
+                
             </div>
             <form >
                 <input
