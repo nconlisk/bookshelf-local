@@ -4,7 +4,6 @@ import ListItem from "./components/ListItem";
 import Auth from "./components/Auth";
 import { useCookies } from 'react-cookie';
 
-
 const App = () => {
   const [cookies, setCookie, removeCookie] = useCookies(null)
   const authToken = cookies.AuthToken

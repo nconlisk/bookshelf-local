@@ -12,8 +12,10 @@ TODO:
 ~~Update backend/server functions to accommodate information from the API calls.~~  
 ~~Improve book adding modal.~~  
 ~~Reformat CSS with library/book theme.~~  
-Implement caching on the data retrieved from API calls  
-Improve user input validations  
-Improve error handling for API calls that return incorrect or no information  
-
+Implement caching on the data retrieved from API calls.  
+Improve user input validations.  
+Improve error handling for API calls that return incorrect or no information.  
+Add check to prevent duplicate book entries.  
+Improve position of the edit modal so it floats on top of scrolling.  
+Improve security around access to google books API.
 

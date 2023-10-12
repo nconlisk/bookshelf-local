@@ -2,6 +2,7 @@ import { useState } from "react"
 import { useCookies } from "react-cookie"
 import BarcodeScanner from "./Scanner"
 
+const APIkey = process.env.REACT_APP_API_KEY
 const GetBook = ({setShowImport, getData}) => {
 
     //remove edit mode, this modal is only used for data import.
@@ -25,7 +26,7 @@ const GetBook = ({setShowImport, getData}) => {
     const getBookInfo = async (e) => {
         e.preventDefault()
         try {
-          const bookURL = `https://www.googleapis.com/books/v1/volumes?q=isbn:${data.isbn}&key=AIzaSyCbuwXvJBWnTMUO-iwMXv2Y79Pucksut68` //${process.env.API_KEY}`
+          const bookURL = `https://www.googleapis.com/books/v1/volumes?q=isbn:${data.isbn}&key=${APIkey}` 
           const response = await fetch(bookURL)  //url with backticks as will be passing email param.
           const bookinfo = await response.json()
           

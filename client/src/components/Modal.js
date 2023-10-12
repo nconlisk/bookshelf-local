@@ -85,7 +85,7 @@ const Modal = ({mode, setShowModal, getData, task}) => {
             <form >
                 <input
                     required
-                    maxLength={30}
+                    maxLength={200}
                     placeholder=" Add book title here"
                     name="title"
                     value={data.title}
@@ -94,7 +94,7 @@ const Modal = ({mode, setShowModal, getData, task}) => {
                 <br/>
                 <input
                     required
-                    maxLength={30}
+                    maxLength={100}
                     placeholder=" Add author here"
                     name="author"
                     value={data.author}
