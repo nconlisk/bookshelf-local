@@ -3,6 +3,8 @@
 const Pool = require('pg-pool');    // from postgres docs
 const url = require('url');
 
+require('dotenv').config()         // for using .env for secret info
+
 const params = url.parse(process.env.POSTGRES_URL);
 const auth = params.auth.split(':');
 
@@ -12,12 +14,12 @@ const config = {
     host: params.hostname,
     port: params.port,
     database: params.pathname.split('/')[1],
-    ssl: true
+    ssl: false
 };
 
 const pool = new Pool(config);
 
-//require('dotenv').config()         // for using .env for secret info
+
 
 // const pool = new Pool({
 //     user: process.env.POSTGRES_USER,
